@@ -1,25 +1,12 @@
-# ReduxSimpleStarter
+# W.I. Code Assignment
+Build a React.js Todo App
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+Requirements:
+1. It is built with React and has an API
+2. It uses some persistent database (your choice)
+3. Deployed online
 
-###Getting Started###
-
-There are two methods for getting started with this repo.
-
-####Familiar with Git?#####
-Checkout this repo, install dependencies, then start the gulp process with the following:
-
-```
-	> git clone git@github.com:StephenGrider/ReduxSimpleStarter.git
-	> cd ReduxSimpleStarter
-	> npm install
-	> npm start
-```
-
-####Not Familiar with Git?#####
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
-
-```
-	> npm install
-	> npm start
-```
+Features:
+1. As a user I can view my list of TODOs so I know what I have outstanding
+2. As a user I can add a new TODO to remember to do something later
+3. As a user I can complete a TODO to mark it as done and remove it from my list of outstanding items
