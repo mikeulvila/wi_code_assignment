@@ -7,9 +7,12 @@ const ctrl = require('./controllers/todos');
 router.get('/todos', ctrl.getTodos);
 
 // POST new todo
-router.post('/todos', ctrl.postTodos);
+router.post('/todos', ctrl.postTodo);
 
 // DELETE todo
 router.delete('/todos/:id', ctrl.deleteTodo);
+
+// UPDATE todo
+router.put('/todos/:id', ctrl.updateTodo);
 
 module.exports = router;
