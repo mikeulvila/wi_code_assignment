@@ -1,7 +1,10 @@
 /client/node_modules
+/server/node_modules
 bundle.js
 npm-debug.log
 
 # IntelliJ
 *.iml
 /client/.idea
+
+
