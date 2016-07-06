@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // define todo model
 const todoSchema = new mongoose.Schema({
-  title: String,
+  todoItem: String,
   completed: Boolean
 });
 
