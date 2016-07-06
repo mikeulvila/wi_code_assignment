@@ -3,10 +3,13 @@ const express = require('express');
 const router = express.Router();
 const ctrl = require('./controllers/todos');
 
-// get all todos
+// GET all todos
 router.get('/todos', ctrl.getTodos);
 
-// create new todo
+// POST new todo
 router.post('/todos', ctrl.postTodos);
+
+// DELETE todo
+router.delete('/todos/:id', ctrl.deleteTodo);
 
 module.exports = router;
