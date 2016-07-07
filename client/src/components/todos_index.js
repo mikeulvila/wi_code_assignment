@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTodos } from '../actions/index';
+import AddTodo from './add_todo';
 
 class TodosIndex extends Component {
 
@@ -22,6 +23,7 @@ class TodosIndex extends Component {
     return (
       <div>
         <h3>Todo List</h3>
+        <AddTodo />
         <ul className='list-group'>
           {this.renderTodos()}
         </ul>

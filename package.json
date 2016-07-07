@@ -11,7 +11,7 @@
   "scripts": {
     "build": "webpack --config ./client/webpack.config.js --progress --colors",
     "server": "nodemon ./server/index.js",
-    "dev": "npm run build && npm run server",
+    "dev": "rm -rf client/public/bundle.js && npm run build && npm run server",
     "start": "node ./server/index.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
