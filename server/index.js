@@ -27,7 +27,7 @@ console.log('Server listening on port: ', port);
 
 // DB connection
 // wrap listen in mongoose callback to make sure mongo is connected
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/react-todo');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/react-todo');
 mongoose.connection.on('open', (err) => {
   if (err) throw err;
   // we're connected to database
