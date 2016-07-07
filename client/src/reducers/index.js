@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
+import todosReducer from './reducer_todos';
+import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  todos: todosReducer,
+  form: formReducer
 });
 
 export default rootReducer;
