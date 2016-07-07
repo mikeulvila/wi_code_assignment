@@ -5,7 +5,9 @@
   "main": "index.js",
   "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
   "scripts": {
-    "build": "webpack --config ./webpack.config.js --progress --colors",
+    "build": "webpack --config ./client/webpack.config.js --progress --colors",
+    "server": "nodemon ./server/index.js",
+    "dev": "npm run build && npm run server",
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
@@ -36,6 +38,11 @@
     "react-router": "^2.0.1",
     "redux": "^3.0.4",
     "redux-form": "^4.1.3",
-    "redux-promise": "^0.5.3"
+    "redux-promise": "^0.5.3",
+    "body-parser": "^1.15.2",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.3",
+    "morgan": "^1.7.0"
   }
 }

@@ -1,6 +1,7 @@
 // entry point for server
 const express = require('express');
 const http = require('http');
+const path = require('path');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
@@ -10,12 +11,13 @@ const cors = require('cors');
 
 // App Setup
   // middleware
+app.use(express.static(path.join(__dirname, '../client/public')));
 app.use(morgan('combined'));
 app.use(cors());
 app.use(bodyParser.json({ type: '*/*'}));
 
   // routes
-app.use('/api', router);
+app.use('/', router);
 
 // Server Setup
 const port = process.env.PORT || 3000;
