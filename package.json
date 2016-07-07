@@ -5,7 +5,8 @@
   "main": "index.js",
   "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
   "engines": {
-    "node": "5.5.0"
+    "node": "5.5.0",
+    "npm": "3.5.3"
   },
   "scripts": {
     "build": "webpack --config ./client/webpack.config.js --progress --colors",
