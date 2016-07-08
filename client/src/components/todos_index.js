@@ -10,12 +10,22 @@ class TodosIndex extends Component {
     this.props.getTodos();
   }
 
+  updateCompleted(todo) {
+    console.log('todo checkbox', todo);
+  }
+
   renderTodos() {
     console.log('this.props inside TodosIndex: ', this.props);
     return this.props.todos.map((todo) => {
       return (
         <li key={todo._id} className='list-group-item'>
-          <div>{todo.todoItem}</div>
+          <div>
+            <input onChange={ () => this.updateCompleted(todo) } type="checkbox" checked={todo.completed} />
+            <span>{todo.todoItem}</span>
+            <button type="button" className="pull-xs-right close" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
         </li>
       );
     });
