@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTodos } from '../actions/index';
+import { getTodos, deleteTodo } from '../actions/index';
 import AddTodo from './add_todo';
 
 class TodosIndex extends Component {
@@ -14,6 +14,11 @@ class TodosIndex extends Component {
     console.log('todo checkbox', todo);
   }
 
+  onDeleteClick(id) {
+    console.log('delete id: ', id);
+    this.props.deleteTodo(id);
+  }
+
   renderTodos() {
     console.log('this.props inside TodosIndex: ', this.props);
     return this.props.todos.map((todo) => {
@@ -22,7 +27,7 @@ class TodosIndex extends Component {
           <div>
             <input onChange={ () => this.updateCompleted(todo) } type="checkbox" checked={todo.completed} />
             <span>{todo.todoItem}</span>
-            <button type="button" className="pull-xs-right close" aria-label="Close">
+            <button onClick={ () => this.onDeleteClick(todo._id) } type="button" className="pull-xs-right close" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -49,4 +54,4 @@ function mapStateToProps(state) {
   return { todos: state.todos.all };
 }
 
-export default connect(mapStateToProps, { getTodos })(TodosIndex);
+export default connect(mapStateToProps, { getTodos, deleteTodo })(TodosIndex);
