@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTodos, deleteTodo } from '../actions/index';
+import { getTodos, updateTodo, deleteTodo } from '../actions/index';
 import AddTodo from './add_todo';
 
 class TodosIndex extends Component {
@@ -12,6 +12,9 @@ class TodosIndex extends Component {
 
   updateCompleted(todo) {
     console.log('todo checkbox', todo);
+    todo.completed = !todo.completed;
+    console.log('todo after update: ', todo);
+    this.props.updateTodo(todo);
   }
 
   onDeleteClick(id) {
@@ -54,4 +57,4 @@ function mapStateToProps(state) {
   return { todos: state.todos.all };
 }
 
-export default connect(mapStateToProps, { getTodos, deleteTodo })(TodosIndex);
+export default connect(mapStateToProps, { getTodos, updateTodo, deleteTodo })(TodosIndex);

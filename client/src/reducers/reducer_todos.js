@@ -1,6 +1,6 @@
-import { GET_TODOS, ADD_TODO, DELETE_TODO } from '../actions/index';
+import { GET_TODOS, ADD_TODO, UPDATE_TODO, DELETE_TODO } from '../actions/index';
 
-console.log('reducer_todo.js', GET_TODOS, ADD_TODO, DELETE_TODO);
+console.log('reducer_todo.js', GET_TODOS, ADD_TODO, UPDATE_TODO, DELETE_TODO);
 
 const INITIAL_STATE = { all: [] };
 
@@ -19,8 +19,12 @@ export default (state = INITIAL_STATE, action) => {
       todos.push(newTodo);
       return { ...state, all: todos };
 
+    case UPDATE_TODO:
+      console.log('reaching UPDATE_TODO reducer');
+
     case DELETE_TODO:
       console.log('reaching DELETE_TODO reducer');
+
     default:
       console.log('DEFAULT REDUCER');
       return state;
