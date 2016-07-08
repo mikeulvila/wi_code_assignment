@@ -19,8 +19,8 @@ module.exports.postTodo = (req, res) => {
     if (err) {
       return res.status(500).json({message: err.message});
     }
-
-    res.json({todo: todo, message: 'Todo item created'});
+    // wrap todo as array
+    res.json({ todos: todo});
 
   });
 }

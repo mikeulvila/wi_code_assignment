@@ -11,8 +11,9 @@ export function getTodos() {
   };
 }
 
-export function addTodo() {
-  const request = axios.post('/api/todos');
+export function addTodo(todo) {
+  console.log('todo in action creator: ', todo);
+  const request = axios.post('/api/todos', todo);
   return {
     type: ADD_TODO,
     payload: request

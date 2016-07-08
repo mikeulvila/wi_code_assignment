@@ -6,10 +6,12 @@ import AddTodo from './add_todo';
 class TodosIndex extends Component {
 
   componentWillMount() {
+    console.log('this.props inside TodosIndex: ', this.props);
     this.props.getTodos();
   }
 
   renderTodos() {
+    console.log('this.props inside TodosIndex: ', this.props);
     return this.props.todos.map((todo) => {
       return (
         <li key={todo._id} className='list-group-item'>
@@ -33,6 +35,7 @@ class TodosIndex extends Component {
 } //end class TodosIndex
 
 function mapStateToProps(state) {
+  console.log('state inside mapStateToProps: ', state)
   return { todos: state.todos.all };
 }
 
