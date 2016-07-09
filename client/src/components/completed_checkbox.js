@@ -31,4 +31,5 @@ export default class CompletedCheckbox extends Component {
       </div>
     );
   }
+
 }

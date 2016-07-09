@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTodos, updateTodo, deleteTodo } from '../actions/index';
 import AddTodo from './add_todo';
-import CompletedCheckbox from './completed_checkbox';
+import TodoItem from './todo_item';
+
 
 class TodosIndex extends Component {
 
@@ -15,39 +16,53 @@ class TodosIndex extends Component {
     console.log('todo checkbox', todo);
     todo.completed = !todo.completed;
     console.log('todo after update: ', todo);
-    this.props.updateTodo(todo);
+    this.props.updateTodo(todo);a
   }
 
   onDeleteClick(id) {
     console.log('delete id: ', id);
+    console.log('this inside delete', this);
+    let todos = this.props.todos;
+    const todoIndex = todos.findIndex((todo) => {
+      return todo._id === id;
+    });
+    todos.splice(todoIndex, 1);
+    this.setState({ all: todos });
     this.props.deleteTodo(id);
   }
 
-  renderTodos() {
-    console.log('this.props inside TodosIndex: ', this.props);
+  renderTodoItems() {
     return this.props.todos.map((todo) => {
       return (
-        <li key={todo._id} className='list-group-item'>
-          <div>
-            <input onChange={ () => this.updateCompleted(todo) } type="checkbox" checked={todo.completed} />
-            <span>{todo.todoItem}</span>
-            <button onClick={ () => this.onDeleteClick(todo._id) } type="button" className="pull-xs-right close" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        </li>
+        <TodoItem key={todo._id} todo={todo} onDeleteClick={this.onDeleteClick.bind(this)} />
       );
     });
   }
 
+  // renderTodos() {
+  //   console.log('this.props inside TodosIndex: ', this.props);
+  //   return this.props.todos.map((todo) => {
+  //     return (
+  //       <li key={todo._id} className='list-group-item'>
+  //         <div>
+  //           <input onChange={ () => this.updateCompleted(todo) } type="checkbox" checked={todo.completed} />
+  //           <span>{todo.todoItem}</span>
+  //           <button onClick={ () => this.onDeleteClick(todo._id) } type="button" className="pull-xs-right close" aria-label="Close">
+  //             <span aria-hidden="true">&times;</span>
+  //           </button>
+  //         </div>
+  //       </li>
+  //     );
+  //   });
+  // }
+
   render() {
     return (
       <div>
-        <CompletedCheckbox />
         <h3>Todo List</h3>
         <AddTodo />
         <ul className='list-group'>
-          {this.renderTodos()}
+          {this.renderTodoItems()}
         </ul>
       </div>
     );

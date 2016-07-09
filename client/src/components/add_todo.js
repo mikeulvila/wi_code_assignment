@@ -5,20 +5,20 @@ import { addTodo } from '../actions/index';
 class AddTodo extends Component {
   constructor(props) {
     super(props);
-    this.state = { todoItem: '' };
+    this.state = { newTodo: '' };
   }
 
   onInputChange(event) {
-    this.setState({ todoItem: event.target.value });
+    this.setState({ newTodo: event.target.value });
   }
 
   onFormSubmit(event) {
     event.preventDefault();
     this.props.addTodo({
-      todoItem: this.state.todoItem,
+      todoItem: this.state.newTodo,
       completed: false
     });
-    console.log('input value: ', this.state.todoItem);
+    console.log('input value: ', this.state.newTodo);
   }
 
   render() {
@@ -28,7 +28,7 @@ class AddTodo extends Component {
           placeholder="Add Todo"
           className="form-control"
           onChange={this.onInputChange.bind(this)}
-          value={this.state.todoItem}
+          value={this.state.newTodo}
         />
         <span className="input-group-btn">
           <button type="submit" className="btn btn-secondary">Add</button>
