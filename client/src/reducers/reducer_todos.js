@@ -21,10 +21,10 @@ export default (state = INITIAL_STATE, action) => {
 
     case UPDATE_TODO:
       console.log('reaching UPDATE_TODO reducer');
-
+      break;
     case DELETE_TODO:
       console.log('reaching DELETE_TODO reducer');
-
+      break;
     default:
       console.log('DEFAULT REDUCER');
       return state;

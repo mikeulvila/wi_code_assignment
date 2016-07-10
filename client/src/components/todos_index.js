@@ -12,6 +12,12 @@ class TodosIndex extends Component {
     this.props.getTodos();
   }
 
+  addNewTodoToList(todo) {
+    let todos = this.props.todos;
+    todos.push(todo);
+    this.setState({ all: todos });
+  }
+
   updateCompleted(todo) {
     console.log('todo checkbox', todo);
     todo.completed = !todo.completed;
@@ -60,7 +66,7 @@ class TodosIndex extends Component {
     return (
       <div>
         <h3>Todo List</h3>
-        <AddTodo />
+        <AddTodo  addNewTodoToList={this.addNewTodoToList.bind(this)} />
         <ul className='list-group'>
           {this.renderTodoItems()}
         </ul>

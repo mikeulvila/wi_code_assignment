@@ -14,10 +14,13 @@ class AddTodo extends Component {
 
   onFormSubmit(event) {
     event.preventDefault();
-    this.props.addTodo({
+    const todo = {
       todoItem: this.state.newTodo,
       completed: false
-    });
+    }
+    this.props.addNewTodoToList(todo);
+    this.props.addTodo(todo);
+    this.setState({ newTodo: '' });
     console.log('input value: ', this.state.newTodo);
   }
 
