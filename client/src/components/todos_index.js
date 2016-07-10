@@ -12,10 +12,10 @@ class TodosIndex extends Component {
     this.props.getTodos();
   }
 
-  addNewTodoToList(todo) {
-    let todos = this.props.todos;
-    todos.push(todo);
-    this.setState({ all: todos });
+  addNewTodoToList() {
+    // let todos = this.props.todos;
+    // todos.push(todo);
+    this.setState({ all: this.props.todos });
   }
 
   updateCompleted(todo) {
