@@ -23,25 +23,20 @@ class TodoItem extends Component {
   render() {
 
     const todo = this.props.todo;
-    var msg;
-    if (this.state.checked) {
-      msg = "checked";
-    } else {
-      msg = "unchecked";
-    }
+    const checked = this.state.checked;
+
     return (
         <li className='list-group-item'>
           <div>
 
             <input
+              className='checkbox'
               onChange={ this.handleCheckbox.bind(this) }
               type="checkbox"
-              defaultChecked={ this.state.checked }
+              defaultChecked={ checked }
             />
 
-            <span>{msg}</span>
-
-            <span>{todo.todoItem}</span>
+            <span className={ checked ? 'completed' : '' }> {todo.todoItem}</span>
 
             <button onClick={ () => this.props.onDeleteClick(todo._id) }
               type="button" className="pull-xs-right close"
