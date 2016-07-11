@@ -6,15 +6,12 @@ class TodoItem extends Component {
 
   constructor(props) {
     super(props);
-    console.log('TodoItem completed: ', this.props.todo.completed);
     this.state = { checked: this.props.todo.completed };
   }
 
   handleCheckbox() {
-    console.log('this.state.checked before setState ', this.state.checked);
     this.setState({ checked: !this.state.checked }, () => {
 
-    console.log('this.state.checked after setState ', this.state.checked);
       this.props.updateTodo({
         todoItem: this.props.todo.todoItem,
         completed: this.state.checked
@@ -45,11 +42,13 @@ class TodoItem extends Component {
             <span>{msg}</span>
 
             <span>{todo.todoItem}</span>
+
             <button onClick={ () => this.props.onDeleteClick(todo._id) }
               type="button" className="pull-xs-right close"
               aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
+
           </div>
         </li>
     );

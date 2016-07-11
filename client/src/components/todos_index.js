@@ -8,7 +8,6 @@ import TodoItem from './todo_item';
 class TodosIndex extends Component {
 
   componentWillMount() {
-    console.log('this.props inside TodosIndex: ', this.props);
     this.props.getTodos();
   }
 
@@ -18,16 +17,7 @@ class TodosIndex extends Component {
     this.setState({ all: this.props.todos });
   }
 
-  updateCompleted(todo) {
-    console.log('todo checkbox', todo);
-    todo.completed = !todo.completed;
-    console.log('todo after update: ', todo);
-    this.props.updateTodo(todo);
-  }
-
   onDeleteClick(id) {
-    console.log('delete id: ', id);
-    console.log('this inside delete', this);
     let todos = this.props.todos;
     const todoIndex = todos.findIndex((todo) => {
       return todo._id === id;
@@ -45,23 +35,6 @@ class TodosIndex extends Component {
     });
   }
 
-  // renderTodos() {
-  //   console.log('this.props inside TodosIndex: ', this.props);
-  //   return this.props.todos.map((todo) => {
-  //     return (
-  //       <li key={todo._id} className='list-group-item'>
-  //         <div>
-  //           <input onChange={ () => this.updateCompleted(todo) } type="checkbox" checked={todo.completed} />
-  //           <span>{todo.todoItem}</span>
-  //           <button onClick={ () => this.onDeleteClick(todo._id) } type="button" className="pull-xs-right close" aria-label="Close">
-  //             <span aria-hidden="true">&times;</span>
-  //           </button>
-  //         </div>
-  //       </li>
-  //     );
-  //   });
-  // }
-
   render() {
     return (
       <div>
@@ -76,7 +49,6 @@ class TodosIndex extends Component {
 } //end class TodosIndex
 
 function mapStateToProps(state) {
-  console.log('state inside mapStateToProps: ', state)
   return { todos: state.todos.all };
 }
 

@@ -26,7 +26,6 @@ class AddTodo extends Component {
       });
 
     this.setState({ newTodo: '' });
-    console.log('input value: ', this.state.newTodo);
   }
 
   render() {
