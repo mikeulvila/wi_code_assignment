@@ -14,7 +14,6 @@ export function getTodos() {
 }
 
 export function addTodo(todo) {
-  console.log('todo in action creator: ', todo);
   const request = axios.post('/api/todos', todo);
   return {
     type: ADD_TODO,
@@ -22,8 +21,7 @@ export function addTodo(todo) {
   };
 }
 
-export function updateTodo(todo) {
-  const id = todo._id;
+export function updateTodo(todo, id) {
   const request = axios.put(`/api/todos/${id}`, todo);
   return {
     type: UPDATE_TODO,

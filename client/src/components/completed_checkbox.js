@@ -21,14 +21,14 @@ export default class CompletedCheckbox extends Component {
       msg = "unchecked";
     }
     return (
-      <div>
+      <span>
         <input
           onChange={ this.handleCheckbox.bind(this) }
           type="checkbox"
           defaultChecked={ this.state.checked }
         />
         <p>This box is {msg}</p>
-      </div>
+      </span>
     );
   }
 

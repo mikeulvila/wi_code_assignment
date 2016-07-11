@@ -22,7 +22,7 @@ class TodosIndex extends Component {
     console.log('todo checkbox', todo);
     todo.completed = !todo.completed;
     console.log('todo after update: ', todo);
-    this.props.updateTodo(todo);a
+    this.props.updateTodo(todo);
   }
 
   onDeleteClick(id) {
