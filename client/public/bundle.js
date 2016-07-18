@@ -26913,7 +26913,9 @@
 
 	var _index = __webpack_require__(248);
 
-	var INITIAL_STATE = { all: [] };
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var INITIAL_STATE = { all: [], message: 'This is a message!' };
 
 	exports.default = function () {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? INITIAL_STATE : arguments[0];
@@ -26922,15 +26924,19 @@
 
 	  switch (action.type) {
 	    case _index.GET_TODOS:
-	      return _extends({}, state, { all: action.payload.data.todos });
+	      return _extends({}, state, { all: action.payload.data.todos, message: 'Got all dem todos' });
 
 	    case _index.ADD_TODO:
 	      var todos = state.all;
 	      var newTodo = action.payload.data.todos;
-	      todos.push(newTodo);
-	      return _extends({}, state, { all: todos });
+
+	      return _extends({}, state, { all: [].concat(_toConsumableArray(todos), [newTodo]), message: 'You just added more stuff todo!' });
 
 	    case _index.UPDATE_TODO:
+	      return _extends({}, state, { message: action.payload.data.message });
+
+	    case _index.DELETE_TODO:
+	      return _extends({}, state, { message: action.payload.data.message });
 
 	    default:
 	      return state;
@@ -31263,13 +31269,6 @@
 	      this.props.getTodos();
 	    }
 	  }, {
-	    key: 'addNewTodoToList',
-	    value: function addNewTodoToList() {
-	      // let todos = this.props.todos;
-	      // todos.push(todo);
-	      this.setState({ all: this.props.todos });
-	    }
-	  }, {
 	    key: 'onDeleteClick',
 	    value: function onDeleteClick(id) {
 	      var todos = this.props.todos;
@@ -31300,11 +31299,16 @@
 	          null,
 	          'Todo List'
 	        ),
-	        _react2.default.createElement(_add_todo2.default, { addNewTodoToList: this.addNewTodoToList.bind(this) }),
+	        _react2.default.createElement(_add_todo2.default, null),
 	        _react2.default.createElement(
 	          'ul',
 	          { className: 'list-group' },
 	          this.renderTodoItems()
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'alert alert-success' },
+	          this.props.message
 	        )
 	      );
 	    }
@@ -31314,7 +31318,9 @@
 	}(_react.Component); //end class TodosIndex
 
 	function mapStateToProps(state) {
-	  return { todos: state.todos.all };
+	  return { todos: state.todos.all,
+	    message: state.todos.message
+	  };
 	}
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, { getTodos: _index.getTodos, updateTodo: _index.updateTodo, deleteTodo: _index.deleteTodo })(TodosIndex);
@@ -31367,8 +31373,6 @@
 	  }, {
 	    key: 'onFormSubmit',
 	    value: function onFormSubmit(event) {
-	      var _this2 = this;
-
 	      event.preventDefault();
 
 	      var todo = {
@@ -31376,9 +31380,7 @@
 	        completed: false
 	      };
 
-	      this.props.addTodo(todo).then(function () {
-	        _this2.props.addNewTodoToList();
-	      });
+	      this.props.addTodo(todo);
 
 	      this.setState({ newTodo: '' });
 	    }

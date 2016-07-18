@@ -20,10 +20,7 @@ class AddTodo extends Component {
       completed: false
     }
 
-    this.props.addTodo(todo)
-      .then(() => {
-        this.props.addNewTodoToList();
-      });
+    this.props.addTodo(todo);
 
     this.setState({ newTodo: '' });
   }

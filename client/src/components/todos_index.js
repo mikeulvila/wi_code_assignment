@@ -11,12 +11,6 @@ class TodosIndex extends Component {
     this.props.getTodos();
   }
 
-  addNewTodoToList() {
-    // let todos = this.props.todos;
-    // todos.push(todo);
-    this.setState({ all: this.props.todos });
-  }
-
   onDeleteClick(id) {
     let todos = this.props.todos;
     const todoIndex = todos.findIndex((todo) => {
@@ -39,17 +33,20 @@ class TodosIndex extends Component {
     return (
       <div>
         <h3>Todo List</h3>
-        <AddTodo  addNewTodoToList={this.addNewTodoToList.bind(this)} />
+        <AddTodo />
         <ul className='list-group'>
           {this.renderTodoItems()}
         </ul>
+        <div className="alert alert-success">{this.props.message}</div>
       </div>
     );
   }
 } //end class TodosIndex
 
 function mapStateToProps(state) {
-  return { todos: state.todos.all };
+  return { todos: state.todos.all,
+           message: state.todos.message
+          };
 }
 
 export default connect(mapStateToProps, { getTodos, updateTodo, deleteTodo })(TodosIndex);
